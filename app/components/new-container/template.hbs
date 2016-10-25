@@ -13,6 +13,8 @@
   <section class="horizontal-form container-fluid well">
       {{#if isUpgrade}}
         {{form-upgrade
+          interval=service.getInterval
+          batchSize=service.getAutoBatchSize
           switch=(action 'selectLaunchConfig')
           optionsChanged=(action 'setUpgrade')
           choices=launchConfigChoices

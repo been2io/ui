@@ -17,7 +17,16 @@ var _allComposeServices;
 var Service = Resource.extend({
   type: 'service',
   intl: Ember.inject.service(),
-
+  growl: Ember.inject.service(),
+  batchRatio                : 0.5,
+  initInterval              :60,
+  getAutoBatchSize: function () {
+    var bSize=Math.round(this.currentScale*this.batchRatio)
+    return bSize<1? 1:bSize
+  }.property('batchRatio'),
+  getInterval:function () {
+    return this.initInterval
+  }.property('initInterval'),
   actions: {
     activate() {
       return this.doAction('activate');
@@ -28,7 +37,7 @@ var Service = Resource.extend({
     },
 
     restart() {
-      return this.doAction('restart', {rollingRestartStrategy: {}});
+      return this.doAction('restart', {rollingRestartStrategy: {"batchSize":this.get('getAutoBatchSize'),'intervalMillis':this.get('getInterval')*1000}});
     },
 
     cancelUpgrade() {
