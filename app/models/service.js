@@ -21,11 +21,11 @@ var Service = Resource.extend({
   batchRatio                : 0.5,
   initInterval              :60,
   getAutoBatchSize: function () {
-    var bSize=Math.round(this.currentScale*this.batchRatio)
-    return bSize<1? 1:bSize
+    var bSize=Math.round(this.currentScale*this.batchRatio);
+    return bSize<1? 1:bSize;
   }.property('batchRatio'),
   getInterval:function () {
-    return this.initInterval
+    return this.initInterval;
   }.property('initInterval'),
   actions: {
     activate() {
