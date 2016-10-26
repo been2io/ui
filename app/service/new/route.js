@@ -71,7 +71,9 @@ export default Ember.Route.extend({
           stdinOpen: true,
           labels: { [C.LABEL.PULL_IMAGE]: C.LABEL.PULL_IMAGE_VALUE },
           restartPolicy: {name: 'always'},
-          networkMode:'host'
+          networkMode:'host',
+          memory:3000*1024*1024,
+          logConfig:{driver: "json-file", config: {'max-file': "1",'max-size': "100m"}}
         };
       }
 
