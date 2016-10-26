@@ -71,6 +71,7 @@ export default Ember.Route.extend({
           stdinOpen: true,
           labels: { [C.LABEL.PULL_IMAGE]: C.LABEL.PULL_IMAGE_VALUE },
           restartPolicy: {name: 'always'},
+          networkMode:'host'
         };
       }
 
