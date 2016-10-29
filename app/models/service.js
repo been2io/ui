@@ -18,8 +18,8 @@ var Service = Resource.extend({
   type: 'service',
   intl: Ember.inject.service(),
   growl: Ember.inject.service(),
-  batchRatio                : 0.5,
-  initInterval              :60,
+  batchRatio                : 0.2,
+  initInterval              :30,
   getAutoBatchSize: function () {
     var bSize=Math.round(this.currentScale*this.batchRatio);
     return bSize<1? 1:bSize;
