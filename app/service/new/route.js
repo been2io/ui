@@ -65,8 +65,11 @@ export default Ember.Route.extend({
           type: 'launchConfig',
           tty: true,
           stdinOpen: true,
-          labels: { [C.LABEL.PULL_IMAGE]: C.LABEL.PULL_IMAGE_VALUE },
+          labels: { [C.LABEL.PULL_IMAGE]: C.LABEL.PULL_IMAGE_VALUE,["io.rancher.scheduler.affinity:container_label_soft_ne"]:"io.rancher.stack_service.name=${stack_name}/${service_name}" },
           restartPolicy: {name: 'always'},
+          networkMode:'host',
+          memory:3000*1024*1024,
+          logConfig:{driver: "json-file", config: {'max-file': "1",'max-size': "100m"}}
         };
       }
 
