@@ -40,7 +40,7 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
   portErrors                : null,
   diskErrors                : null,
   activeLaunchConfigIndex   : -1,
-
+  previous_image :"",
   actions: {
     selectLaunchConfig(index) {
       this.set('activeLaunchConfigIndex', index);
@@ -129,7 +129,13 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
 
   init() {
     this._super(...arguments);
+    try {
+      this.previous_image=this.service.upgrade.inServiceStrategy.previousLaunchConfig.imageUuid
 
+      this.previous_image=this.previous_image.substring(this.previous_image.indexOf(":")+1)
+    }catch(e){
+
+    }
     if ( !this.get('launchConfig.secrets') ) {
       this.set('launchConfig.secrets', []);
     }
@@ -193,7 +199,11 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
   noLaunchConfigsEnabled: function() {
     return this.get('launchConfigChoices').filterBy('enabled',true).get('length') === 0;
   }.property('launchConfigChoices.@each.enabled'),
+  get_previous_image:(function(){
+    image =""
 
+    return image
+  }),
   activeLabel: function() {
     var idx = this.get('launchConfigIndex');
     var str = '';

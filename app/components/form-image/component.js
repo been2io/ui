@@ -20,7 +20,7 @@ export default Ember.Component.extend(ManageLabels, {
   tagName: '',
   pullImage: null,
   value: null,
-
+  previous_image:null,
   actions: {
     setInput(str) {
       this.set('userInput', str);
@@ -30,7 +30,6 @@ export default Ember.Component.extend(ManageLabels, {
   init() {
     this._super(...arguments);
     this.initLabels(this.get('initialLabels'), null, C.LABEL.PULL_IMAGE);
-
     var pull = this.getLabel(C.LABEL.PULL_IMAGE) === C.LABEL.PULL_IMAGE_VALUE;
     this.set('pullImage', pull);
 
