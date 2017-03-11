@@ -130,9 +130,9 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
   init() {
     this._super(...arguments);
     try {
-      this.previous_image=this.service.upgrade.inServiceStrategy.previousLaunchConfig.imageUuid
+      this.previous_image=this.service.upgrade.inServiceStrategy.previousLaunchConfig.imageUuid;
 
-      this.previous_image=this.previous_image.substring(this.previous_image.indexOf(":")+1)
+      this.previous_image=this.previous_image.substring(this.previous_image.indexOf(":")+1);
     }catch(e){
 
     }
@@ -199,7 +199,7 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
   noLaunchConfigsEnabled: function() {
     return this.get('launchConfigChoices').filterBy('enabled',true).get('length') === 0;
   }.property('launchConfigChoices.@each.enabled'),
- 
+
   activeLabel: function() {
     var idx = this.get('launchConfigIndex');
     var str = '';
