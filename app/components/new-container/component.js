@@ -199,11 +199,7 @@ export default Ember.Component.extend(NewOrEdit, SelectTab, {
   noLaunchConfigsEnabled: function() {
     return this.get('launchConfigChoices').filterBy('enabled',true).get('length') === 0;
   }.property('launchConfigChoices.@each.enabled'),
-  get_previous_image:(function(){
-    image =""
-
-    return image
-  }),
+ 
   activeLabel: function() {
     var idx = this.get('launchConfigIndex');
     var str = '';
